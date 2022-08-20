@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import React from 'react'
+// import { Link } from "react-router-dom";
 import axios from 'axios';
-import Notifications from "./Notifications";
+// import Notifications from "./Notifications";
 
 // reactstrap components
 import {
@@ -45,7 +45,7 @@ const SignUp = () => {
   }
   const sendMessage = (e) => {
 
-    if (message.firstName.length === 0 || message.lastName.length == 0 || message.email.length == 0 || message.content.length == 0) {
+    if (message.firstName.length === 0 || message.lastName.length === 0 || message.email.length === 0 || message.content.length === 0) {
       return;
     }
 

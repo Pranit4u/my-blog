@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // reactstrap components
 import { Button, Col, Container, Row } from "reactstrap";
 
@@ -20,7 +20,7 @@ function Examples() {
         <Container className="text-center">
           <Row>
             <div className="col">
-              <a href="https://ecstatic-perlman-7b46c0.netlify.app/" target="_blank">
+              <a href="https://ecstatic-perlman-7b46c0.netlify.app/" >
                 <img
                   alt="..."
                   className="img-raised"
@@ -37,7 +37,7 @@ function Examples() {
               </Button>
             </div>
             <div className="col">
-              <a href="https://github.com/Pranit4u/GrieSol" target="_blank">
+              <a href="https://github.com/Pranit4u/GrieSol" >
                 <img
                   alt="..."
                   className="img-raised"
