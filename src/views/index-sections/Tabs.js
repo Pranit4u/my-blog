@@ -1,8 +1,8 @@
 import React from "react";
 import axios from 'axios';
-import Switch from "react-bootstrap-switch";
+// import Switch from "react-bootstrap-switch";
 // plugin that creates slider
-import Slider from "nouislider";
+// import Slider from "nouislider";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // reactstrap components
 import {
@@ -32,7 +32,7 @@ import storage from "firebaseConfig";
 
 function Tabs() {
   const [iconPills, setIconPills] = React.useState("1");
-  const [pills, setPills] = React.useState("1");
+  // const [pills, setPills] = React.useState("1");
   const [messages, setMessages] = React.useState([])
   const [fetched, setFetched] = React.useState(false)
   const [info, setInfo] = React.useState({ caption: "", altText: "" ,src: "", type: ""})
@@ -57,7 +57,7 @@ function Tabs() {
 
   const uploadToFirebase = () => {
 
-    if (info.altText.length == 0 || info.caption.length == 0 || info.type.length == 0){
+    if (info.altText.length === 0 || info.caption.length === 0 || info.type.length === 0){
       alert("Please fill all fields!");
         return;
     }

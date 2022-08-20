@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 
 // reactstrap components
 import {
   Button,
   Card,
-  CardHeader,
+  // CardHeader,
   CardBody,
   CardFooter,
   Form,
@@ -19,8 +19,8 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
+// import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+// import TransparentFooter from "components/Footers/TransparentFooter.js";
 
 function LoginPage() {
   const history = useHistory()
@@ -50,7 +50,7 @@ function LoginPage() {
 
   const login = (e) => {
     e.preventDefault();
-    if (info.email != "pranitud@gmail.com" || info.password != "Pranit@mr03") {
+    if (info.email !== "pranitud@gmail.com" || info.password !== "Pranit@mr03") {
       alert("Wrong Credentials")
     }
     else {
