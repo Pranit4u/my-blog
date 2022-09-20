@@ -25,7 +25,7 @@ function MyStory() {
 
   return (
     <Container>
-      <div className="justify-content-center">
+      <div style={{textAlign:"center"}} className="justify-content-center">
 
         <Document
           file={samplePdf}
