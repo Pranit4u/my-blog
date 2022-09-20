@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import samplePdf from './Pranit.pdf'
 import {
-  Container,
   Button
 } from "reactstrap";
 
