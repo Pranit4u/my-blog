@@ -59,7 +59,7 @@ function IndexNavbar() {
             >
               Pranit Foo
             </NavbarBrand>
-            
+
             <button
               className="navbar-toggler navbar-toggler"
               onClick={() => {
@@ -164,7 +164,7 @@ function IndexNavbar() {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-             
+
               <NavItem>
                 <NavLink
                   href="#pablo"
@@ -182,10 +182,19 @@ function IndexNavbar() {
 
               <NavItem>
                 <NavLink>
-                <Link to={'/login-page'}>
-                  {/* <i className="now-ui-icons arrows-1_cloud-download-93"></i> */}
-                  <p>Login</p>
-</Link>
+                  <Link to={'/login-page'}>
+                    {/* <i className="now-ui-icons arrows-1_cloud-download-93"></i> */}
+                    <p>Login</p>
+                  </Link>
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink>
+                  <Link to={'/pranit-story'}>
+                    {/* <i className="now-ui-icons arrows-1_cloud-download-93"></i> */}
+                    <p>Story</p>
+                  </Link>
                 </NavLink>
               </NavItem>
 

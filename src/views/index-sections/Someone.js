@@ -80,7 +80,7 @@ function SomeoneSection() {
       <div className="section" id="my-someone">
         <Container>
           <div className="title">
-            <h4>My Someone</h4>
+            <h4>My Something</h4>
           </div>
           <Row className="justify-content-center">
             <Col lg="8" md="12">

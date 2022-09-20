@@ -15,11 +15,11 @@ import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Tabs from "views/index-sections/Tabs";
+import App from "App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  // <Tabs />
   <BrowserRouter>
     <Switch>
       <Switch>
@@ -27,6 +27,10 @@ root.render(
         <Route
           path="/nucleo-icons"
           render={(props) => <NucleoIcons {...props} />}
+        />
+        <Route
+          path="/pranit-story"
+          render={(props) => <App {...props} />}
         />
         <Route
           path="/landing-page"
