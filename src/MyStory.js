@@ -24,14 +24,15 @@ function MyStory() {
 
 
   return (
-    <Container>
+    // <Container>
       <div style={{textAlign:"center"}} className="justify-content-center">
 
         <Document
+          
           file={samplePdf}
           onLoadSuccess={onDocumentLoadSuccess}
         >
-          <Page pageNumber={pageNumber} />
+          <Page width={window.innerWidth} pageNumber={pageNumber}/>
         </Document>
 
         <div style={{ textAlign: "center" }}>
@@ -42,7 +43,7 @@ function MyStory() {
           </p>
         </div>
       </div>
-    </Container>
+    // </Container>
   )
 }
 

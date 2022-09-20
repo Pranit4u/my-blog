@@ -6,7 +6,7 @@ function App() {
   
   return (
     <>
-      <div className="section">
+      <div>
         <MyStory />
       </div>
     </>
