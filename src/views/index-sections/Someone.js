@@ -83,8 +83,8 @@ function SomeoneSection() {
 
   const handleChange = (e) =>{
     var st = e.target.value
-    st.toLowerCase().trim()
     setPassCode(st);
+    st = st.toLowerCase().trim()
     if (st === "april"){
       setBlurOn(false);
     }
