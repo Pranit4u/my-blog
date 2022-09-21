@@ -19,7 +19,7 @@ import {
 
 function SomeoneSection() {
   const [blurOn, setBlurOn] = useState(true);
-  const [passCode,setPassCode] = useState("");
+  const [passCode, setPassCode] = useState("");
 
   const [items, setItems] = React.useState([
     {
@@ -81,11 +81,11 @@ function SomeoneSection() {
     setActiveIndex(newIndex);
   };
 
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     var st = e.target.value
     setPassCode(st);
     st = st.toLowerCase().trim()
-    if (st === "april"){
+    if (st === "april") {
       setBlurOn(false);
     }
   }
@@ -97,7 +97,7 @@ function SomeoneSection() {
         <Container>
           <div className="title">
             <h4>My Something</h4>
-            { blurOn ? <FormGroup style={{ width: 200, marginLeft: 450 }} className="has-success">
+            {blurOn ? <div><FormGroup style={{ width: 200, position: "absolute", left: "50%", transform: "translate(-50%, -50%)" }} className="has-success">
               <Input
                 className="form-control-success"
                 type="text"
@@ -105,7 +105,8 @@ function SomeoneSection() {
                 onChange={handleChange}
                 value={passCode}
               ></Input>
-            </FormGroup> : <div/>  }
+            </FormGroup><br />
+              <br /></div> : <div />}
           </div>
 
           <Row className="justify-content-center">
