@@ -14,7 +14,7 @@ import {
 
 
 function CarouselSection() {
-  const [items,setItems] = React.useState([
+  const [items, setItems] = React.useState([
     {
       src: require("assets/img/bg1.jpg"),
       altText: "Nature, United States",
@@ -32,22 +32,22 @@ function CarouselSection() {
     }
   ]);
 
-  const [fetched,setFetched] = React.useState(false);
+  const [fetched, setFetched] = React.useState(false);
 
-  const getPictures = async() => {
-        const res = await axios.get('https://pranit-blog.herokuapp.com/addPicture/get',{
-            params: {
-              type: "College"
-            }
-          });
-        if (res.data.length !== 0){
-            setFetched(true);
-            setItems(res.data)
-        }else{
-            // alert("Patient Data not Found");
-        }
+  const getPictures = async () => {
+    const res = await axios.get('https://pranit-blog.herokuapp.com/addPicture/get', {
+      params: {
+        type: "College"
+      }
+    });
+    if (res.data.length !== 0) {
+      setFetched(true);
+      setItems(res.data)
+    } else {
+      // alert("Patient Data not Found");
+    }
   }
-  if (!fetched){
+  if (!fetched) {
     getPictures();
   }
 
@@ -85,6 +85,7 @@ function CarouselSection() {
           </div>
           <Row className="justify-content-center">
             <Col lg="8" md="12">
+              
               <Carousel
                 activeIndex={activeIndex}
                 next={next}
@@ -136,6 +137,7 @@ function CarouselSection() {
               </Carousel>
             </Col>
           </Row>
+
         </Container>
       </div>
     </>

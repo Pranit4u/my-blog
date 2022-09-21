@@ -24,24 +24,23 @@ function MyStory() {
 
   return (
     // <Container>
-      <div style={{textAlign:"center"}} className="justify-content-center">
+    <div style={{ textAlign: "center" }} className="justify-content-center">
+      <Document
+        file={samplePdf}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
+          <Page width={window.innerWidth} pageNumber={pageNumber} />
+      </Document>
 
-        <Document
-          
-          file={samplePdf}
-          onLoadSuccess={onDocumentLoadSuccess}
-        >
-          <Page width={window.innerWidth} pageNumber={pageNumber}/>
-        </Document>
-
-        <div style={{ textAlign: "center" }}>
-          <Button onClick={goToPrevPage}>Prev</Button>
-          <Button onClick={goToNextPage}>Next</Button>
-          <p>
-            Page {pageNumber} of {numPages}
-          </p>
-        </div>
+      <div style={{ textAlign: "center" }}>
+        <Button onClick={goToPrevPage}>Prev</Button>
+        <Button onClick={goToNextPage}>Next</Button>
+        <p>
+          Page {pageNumber} of {numPages}
+        </p>
       </div>
+    </div>
+
     // </Container>
   )
 }
