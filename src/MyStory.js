@@ -52,7 +52,7 @@ function MyStory() {
 
   const unlockChapter = () => {
     var st = passCode.trim().toLowerCase()
-    if (st !== "mrunal"){
+    if (st !== "kapil"){
       setPassCode("")
       alert("Wrong Code");
     }
@@ -139,8 +139,8 @@ function MyStory() {
           {[...Array(10)].map((x, i) =>
             <PaginationItem id={i} className={pageNumber - 1 === i ? "active" : ""}>
               <PaginationLink
-                href="#pablo"
-                onClick={(e) => setPageNumber(i + 1)}
+                // href="#pablo"
+                // onClick={(e) => setPageNumber(i + 1)}
               >
                 {i + 1}
               </PaginationLink>
