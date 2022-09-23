@@ -29,7 +29,7 @@ root.render(
           render={(props) => <NucleoIcons {...props} />}
         />
         <Route
-          path="/pranit-story"
+          path="/my-book"
           render={(props) => <App {...props} />}
         />
         <Route
