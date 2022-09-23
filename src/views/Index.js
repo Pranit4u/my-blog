@@ -25,7 +25,6 @@ import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 // import Download from "./index-sections/Download.js";
 import ProfilePage from "./examples/ProfilePage.js";
-import FamSection from "./index-sections/Fam.js";
 import OfficeSection from "./index-sections/Office.js";
 import SomeoneSection from "./index-sections/Someone.js";
 
