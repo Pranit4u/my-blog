@@ -59,7 +59,6 @@ function Index() {
           <Examples />
           <Carousel /> 
           <OfficeSection />
-          <FamSection />
           <SomeoneSection/>
           {/* <NucleoIcons /> */}
           {/* <CompleteExamples /> */}

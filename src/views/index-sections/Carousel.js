@@ -81,7 +81,7 @@ function CarouselSection() {
       <div className="section" id="my-college">
         <Container>
           <div className="title">
-            <h4>My College</h4>
+            <h4>College</h4>
           </div>
           <Row className="justify-content-center">
             <Col lg="8" md="12">

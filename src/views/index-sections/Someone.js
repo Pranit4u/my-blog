@@ -96,7 +96,7 @@ function SomeoneSection() {
       <div className="section" id="my-someone">
         <Container>
           <div className="title">
-            <h4>My Something</h4>
+            <h4>Something</h4>
             {blurOn ? <div><FormGroup style={{ width: 200, position: "absolute", left: "50%", transform: "translate(-50%, -50%)" }} className="has-success">
               <Input
                 className="form-control-success"

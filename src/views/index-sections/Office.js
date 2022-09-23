@@ -81,7 +81,7 @@ function OfficeSection() {
       <div className="section" id="my-office">
         <Container>
           <div className="title">
-            <h4>My Office</h4>
+            <h4>Office</h4>
           </div>
           <Row className="justify-content-center">
             <Col lg="8" md="12">
