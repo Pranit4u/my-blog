@@ -127,7 +127,7 @@ function IndexNavbar() {
                       .scrollIntoView();
                   }}>
                     {/* <i className="now-ui-icons business_chart-pie-36 mr-1"></i> */}
-                    My College
+                    College
                   </DropdownItem>
                   <DropdownItem
                     onClick={(e) => {
@@ -138,19 +138,9 @@ function IndexNavbar() {
                     }}
                   >
                     {/* <i className="now-ui-icons design_bullet-list-67 mr-1"></i> */}
-                    My Office
+                    Office
                   </DropdownItem>
-                  <DropdownItem
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document
-                        .getElementById("my-fam")
-                        .scrollIntoView();
-                    }}
-                  >
-                    {/* <i className="now-ui-icons design_bullet-list-67 mr-1"></i> */}
-                    My Fam
-                  </DropdownItem>
+                  
                   <DropdownItem
                     onClick={(e) => {
                       e.preventDefault();
@@ -160,7 +150,7 @@ function IndexNavbar() {
                     }}
                   >
                     {/* <i className="now-ui-icons design_bullet-list-67 mr-1"></i> */}
-                    My Someone
+                    Something
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
