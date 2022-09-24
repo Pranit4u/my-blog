@@ -22,6 +22,7 @@ function MyStory() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [modal, setModal] = useState(false);
   const [passCode, setPassCode] = useState("");
+  const lst = ["mrunal","kapil"]
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
@@ -50,9 +51,10 @@ function MyStory() {
     setPassCode(st)
   }
 
+
   const unlockChapter = () => {
     var st = passCode.trim().toLowerCase()
-    if (st !== "kapil"){
+    if (st !== lst[Math.floor(Math.random()*lst.length)]){
       setPassCode("")
       alert("Wrong Code");
     }
