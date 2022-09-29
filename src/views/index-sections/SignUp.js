@@ -1,12 +1,12 @@
-import React, { useRef } from 'react'
+import React from 'react'
 // import { Link } from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
 // import Notifications from "./Notifications";
 import emailjs from '@emailjs/browser';
 
 // reactstrap components
 import {
-  Button,
+  // Button,
   Card,
   CardHeader,
   CardBody,
@@ -34,6 +34,7 @@ const SignUp = () => {
     firstName: "",
     lastName: ""
   })
+  
 
   const sendEmail = (e) => {
     e.preventDefault(); // prevents the page from reloading when you hit “Send”
@@ -55,38 +56,38 @@ const SignUp = () => {
     })
 
   }
-  const sendMessage = (e) => {
+  // const sendMessage = (e) => {
 
-    if (message.firstName.length === 0 || message.lastName.length === 0 || message.email.length === 0 || message.content.length === 0) {
-      return;
-    }
+  //   if (message.firstName.length === 0 || message.lastName.length === 0 || message.email.length === 0 || message.content.length === 0) {
+  //     return;
+  //   }
 
-    const obj = {
-      "firstName": message.firstName,
-      "lastName": message.lastName,
-      "email": message.email,
-      "content": message.content
-    }
+  //   const obj = {
+  //     "firstName": message.firstName,
+  //     "lastName": message.lastName,
+  //     "email": message.email,
+  //     "content": message.content
+  //   }
 
-    axios.post("https://pranit-blog.herokuapp.com/sendMessage/send", obj)
-      .then(res => {
-        const r = res.data.message;
-        switch (r) {
-          case "1":
-            alert("Message is sent.")
-            break;
-          default:
-            alert("Something went wrong")
-            break;
+  //   axios.post("https://pranit-blog.herokuapp.com/sendMessage/send", obj)
+  //     .then(res => {
+  //       const r = res.data.message;
+  //       switch (r) {
+  //         case "1":
+  //           alert("Message is sent.")
+  //           break;
+  //         default:
+  //           alert("Something went wrong")
+  //           break;
 
-        }
-      })
-      .catch((e) => {
-        alert("Error in server :(")
-        console.log("error catch ->" + e)
-      })
-    setMessage({ email: "", firstName: "", lastName: "", content: "" })
-  }
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       alert("Error in server :(")
+  //       console.log("error catch ->" + e)
+  //     })
+  //   setMessage({ email: "", firstName: "", lastName: "", content: "" })
+  // }
 
   return (
     <>

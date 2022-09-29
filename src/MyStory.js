@@ -71,7 +71,7 @@ function MyStory() {
  
   return (
     <div>
-      <h6>You are not authorised to view this</h6>
+      <h6>You are not authorised to view this. Fuck yourself to view this</h6>
     </div>
     // <div style={{ textAlign: "center" }} className="justify-content-center">
     //   {loading ? <div style={{ margin: 20 }} className="progress-container progress-info">
