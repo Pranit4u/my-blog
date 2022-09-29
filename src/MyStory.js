@@ -1,71 +1,72 @@
-import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
-import samplePdf from './Pranit.pdf'
+import React from 'react';
+// import React, { useState } from 'react';
+// import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
+// import samplePdf from './Pranit.pdf'
 
 
-import {
-  Button, Progress,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Modal,
-  ModalBody,
-  Input,
-  FormGroup
-} from "reactstrap";
+// import {
+//   Button, Progress,
+//   Pagination,
+//   PaginationItem,
+//   PaginationLink,
+//   Modal,
+//   ModalBody,
+//   Input,
+//   FormGroup
+// } from "reactstrap";
 
 function MyStory() {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [amountLoaded, setAmountLoaded] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [modal, setModal] = useState(false);
-  const [passCode, setPassCode] = useState("");
-  const lst = ["mrunal","kapil"]
+  // const [numPages, setNumPages] = useState(null);
+  // const [pageNumber, setPageNumber] = useState(1);
+  // const [loading, setLoading] = useState(true);
+  // const [amountLoaded, setAmountLoaded] = useState(0);
+  // const [totalAmount, setTotalAmount] = useState(0);
+  // const [modal, setModal] = useState(false);
+  // const [passCode, setPassCode] = useState("");
+  // const lst = ["mrunal","kapil"]
 
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-  };
+  // const onDocumentLoadSuccess = ({ numPages }) => {
+  //   setNumPages(numPages);
+  // };
 
-  const onDocumentLoadProgress = ({ loaded, total }) => {
-    setAmountLoaded(loaded)
-    setTotalAmount(total)
-  }
+  // const onDocumentLoadProgress = ({ loaded, total }) => {
+  //   setAmountLoaded(loaded)
+  //   setTotalAmount(total)
+  // }
 
-  const goToPrevPage = () =>
-    setPageNumber(pageNumber - 1 <= 1 ? 1 : pageNumber - 1);
+  // const goToPrevPage = () =>
+  //   setPageNumber(pageNumber - 1 <= 1 ? 1 : pageNumber - 1);
 
-  const goToNextPage = () => {
-    if(pageNumber%2 !== 0){
-      setModal(true);
-      return;
-    }
-    setPageNumber(
-      pageNumber + 1 >= numPages ? numPages : pageNumber + 1,
-    )
-  };
+  // const goToNextPage = () => {
+  //   if(pageNumber%2 !== 0){
+  //     setModal(true);
+  //     return;
+  //   }
+  //   setPageNumber(
+  //     pageNumber + 1 >= numPages ? numPages : pageNumber + 1,
+  //   )
+  // };
 
-  const handleChange = (e) => {
-    var st = e.target.value
-    setPassCode(st)
-  }
+  // const handleChange = (e) => {
+  //   var st = e.target.value
+  //   setPassCode(st)
+  // }
 
 
-  const unlockChapter = () => {
-    var st = passCode.trim().toLowerCase()
-    if (st !== lst[Math.floor(Math.random()*lst.length)]){
-      setPassCode("")
-      alert("Wrong Code");
-    }
-    else{
-      setPassCode("")
-      setPageNumber(
-        pageNumber + 1 >= numPages ? numPages : pageNumber + 1,
-      )
-    }
-    setModal(false);
-  }
+  // const unlockChapter = () => {
+  //   var st = passCode.trim().toLowerCase()
+  //   if (st !== lst[Math.floor(Math.random()*lst.length)]){
+  //     setPassCode("")
+  //     alert("Wrong Code");
+  //   }
+  //   else{
+  //     setPassCode("")
+  //     setPageNumber(
+  //       pageNumber + 1 >= numPages ? numPages : pageNumber + 1,
+  //     )
+  //   }
+  //   setModal(false);
+  // }
 
  
   return (
