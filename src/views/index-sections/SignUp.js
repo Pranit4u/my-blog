@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 // import { Link } from "react-router-dom";
 import axios from 'axios';
 // import Notifications from "./Notifications";
+import emailjs from '@emailjs/browser';
 
 // reactstrap components
 import {
@@ -27,13 +28,24 @@ const SignUp = () => {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
   const [emailFocus, setEmailFocus] = React.useState(false);
-
   const [message, setMessage] = React.useState({
     email: "",
     content: "",
     firstName: "",
     lastName: ""
   })
+
+  const sendEmail = (e) => {
+    e.preventDefault(); // prevents the page from reloading when you hit “Send”
+    
+    emailjs.send('service_zyn3zgg', 'template_kv0rjuh', message, 'bW-f6sRQH40mqrH0D')
+      .then((result) => {
+        alert("Email Sent")
+      }, (error) => {
+        alert("Email Not Sent")
+      });
+    setMessage({ email: "", firstName: "", lastName: "", content: "" })
+  };
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -57,25 +69,25 @@ const SignUp = () => {
     }
 
     axios.post("https://pranit-blog.herokuapp.com/sendMessage/send", obj)
-            .then(res => {
-                const r = res.data.message;
-                switch (r) {
-                    case "1":
-                        alert("Message is sent.")
-                        break;
-                    default:
-                        alert("Something went wrong")
-                        break;
-            
-                }
-            })
-            .catch((e) =>{ 
-                alert("Error in server :(")
-                console.log("error catch ->" + e)
-            })
-    setMessage({email:"",firstName:"",lastName:"", content: ""})
+      .then(res => {
+        const r = res.data.message;
+        switch (r) {
+          case "1":
+            alert("Message is sent.")
+            break;
+          default:
+            alert("Something went wrong")
+            break;
+
+        }
+      })
+      .catch((e) => {
+        alert("Error in server :(")
+        console.log("error catch ->" + e)
+      })
+    setMessage({ email: "", firstName: "", lastName: "", content: "" })
   }
-  
+
   return (
     <>
       <div
@@ -91,41 +103,12 @@ const SignUp = () => {
         <Container>
           <Row>
             <Card className="card-signup" data-background-color="blue">
-              <Form action="" className="form" method="">
+              <Form className="form" onSubmit={sendEmail}>
                 <CardHeader className="text-center">
                   <CardTitle className="title-up" tag="h3">
                     Get In Touch
                   </CardTitle>
-
-                  <InputGroup>
-                    <InputGroupAddon>
-                      <InputGroupText style={{ paddingRight: 20 }}>
-                        <i className="now-ui-icons location_pin" style={{ marginRight: 15 }}></i>
-                        Shreeram Nagar Tumsar, MH
-                      </InputGroupText>
-                    </InputGroupAddon>
-                  </InputGroup>
-
-                  <InputGroup>
-                    <InputGroupAddon>
-                      <InputGroupText style={{ paddingRight: 20 }}>
-                        <i className="now-ui-icons tech_mobile" style={{ marginRight: 15 }}></i>
-                        9172111984
-                      </InputGroupText>
-                    </InputGroupAddon>
-                  </InputGroup>
-
-                  <InputGroup>
-                    <InputGroupAddon>
-                      <InputGroupText style={{ paddingRight: 20 }}>
-                        <i className="now-ui-icons users_single-02" style={{ marginRight: 15 }}></i>
-                        pranitud@gmail.com
-                      </InputGroupText>
-                    </InputGroupAddon>
-                  </InputGroup>
-
                 </CardHeader>
-
                 <CardBody>
                   <InputGroup
                     className={
@@ -209,14 +192,18 @@ const SignUp = () => {
                   </InputGroup>
                 </CardBody>
                 <CardFooter className="text-center">
-                  <Button
+                  <Input type="submit" value="Send" className="btn-neutral btn-round"
+                    color="info" style={{ width: 100, position: "relative", left: "50%", transform: "translate(-50%, -50%)" }}
+                  />
+
+                  {/* <Button
                     className="btn-neutral btn-round"
                     color="info"
                     onClick={sendMessage}
                     size="lg"
                   >
                     Send Message
-                  </Button>
+                  </Button> */}
                 </CardFooter>
               </Form>
             </Card>
