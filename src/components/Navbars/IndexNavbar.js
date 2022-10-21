@@ -188,6 +188,15 @@ function IndexNavbar() {
                 </NavLink>
               </NavItem>
 
+              <NavItem>
+                <NavLink>
+                  <Link to={'/game'}>
+                    {/* <i className="now-ui-icons arrows-1_cloud-download-93"></i> */}
+                    <p>Game</p>
+                  </Link>
+                </NavLink>
+              </NavItem>
+
 
               <NavItem>
                 <NavLink

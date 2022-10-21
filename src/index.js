@@ -16,6 +16,7 @@ import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Tabs from "views/index-sections/Tabs";
 import App from "App";
+import Game from "Game";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -31,6 +32,10 @@ root.render(
         <Route
           path="/pranit-story"
           render={(props) => <App {...props} />}
+        />
+        <Route
+          path="/game"
+          render={(props) => <Game {...props} />}
         />
         <Route
           path="/landing-page"
