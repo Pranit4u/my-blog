@@ -10,8 +10,8 @@ const Game = ({user1,user2}) => {
     const [genre,setGenre] = useState("Rom");
     const [questions,setQuestions] = useState([]);
     const [currQuestion,setCurrQuestion] = useState("Start the game");
-    const [user1Score,setUser1Score] = useState(10);
-    const [user2Score,setUser2Score] = useState(10);
+    const [user1Score,setUser1Score] = useState(50);
+    const [user2Score,setUser2Score] = useState(50);
     const [user1Message,setUser1Message] = useState("");
     const [user2Message,setUser2Message] = useState("");
     const [textMessage,setTextMessage] = useState("");
@@ -20,7 +20,6 @@ const Game = ({user1,user2}) => {
     // const user1 = "pranit";
     // const user2 = "mrunal";
     const concat_str = user1<user2 ? user1+"_"+user2 : user2+"_"+user1;
-
 
     const getQuestions = async (gen) => {
         setFetched(true);
@@ -65,7 +64,7 @@ const Game = ({user1,user2}) => {
         setUser2Message(data.user2);
         });
 
-    },[]);
+    },[concat_str]);
 
 
     const handleChange = e => {
@@ -131,18 +130,18 @@ const Game = ({user1,user2}) => {
             <Row>
                 <img
                     style={{ marginRight: "auto" }}
-                    alt="..."
+                    alt={user1}
                     className="rounded img-raised"
-                    src={require("assets/img/julie.jpg")}
+                    // src={require("assets/img/julie.jpg")}
                     height={50}
                     width={50}
                 />
                 <GenreDropDown genre={genre} getQuestions={getQuestions}/>
                 <img
                     style={{ marginLeft: "auto" }}
-                    alt="..."
+                    alt={user2}
                     className="rounded img-raised"
-                    src={require("assets/img/julie.jpg")}
+                    // src={require("assets/img/julie.jpg")}
                     height={50}
                     width={50}
                 />
