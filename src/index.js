@@ -16,7 +16,7 @@ import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Tabs from "views/index-sections/Tabs";
 import App from "App";
-import Game from "Game";
+import GameLanding from "GameLanding";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -34,8 +34,8 @@ root.render(
           render={(props) => <App {...props} />}
         />
         <Route
-          path="/game"
-          render={(props) => <Game {...props} />}
+          path="/gamelanding"
+          render={(props) => <GameLanding {...props} />}
         />
         <Route
           path="/landing-page"

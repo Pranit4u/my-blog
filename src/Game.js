@@ -6,17 +6,21 @@ import {
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import axios from 'axios';
 
-const Game = () => {
+const Game = ({user1,user2}) => {
     const [genre,setGenre] = useState("Rom");
     const [questions,setQuestions] = useState([]);
     const [currQuestion,setCurrQuestion] = useState("Start the game");
-    const [pranitScore,setPranitScore] = useState(10);
-    const [mrunalScore,setMrunalScore] = useState(10);
-    const [pranitMessage,setPranitMessage] = useState("");
-    const [mrunalMessage,setMrunalMessage] = useState("");
+    const [user1Score,setUser1Score] = useState(10);
+    const [user2Score,setUser2Score] = useState(10);
+    const [user1Message,setUser1Message] = useState("");
+    const [user2Message,setUser2Message] = useState("");
     const [textMessage,setTextMessage] = useState("");
-    const [askQuestionText,setAskQuestionText] = useState("");
+    const [askQuestionText,setAskQuestionText]  = useState("");
     const [fetched, setFetched] = useState(false);
+    // const user1 = "pranit";
+    // const user2 = "mrunal";
+    const concat_str = user1<user2 ? user1+"_"+user2 : user2+"_"+user1;
+
 
     const getQuestions = async (gen) => {
         setFetched(true);
@@ -38,27 +42,27 @@ const Game = () => {
 
     useEffect(() => {
         const db = getDatabase();
-        set(ref(db,'game1/mrunal_pranit/question'),{value: "Start the game"});
-        set(ref(db,'game1/mrunal_pranit/score'),{pranit: 10, mrunal: 10});
-        set(ref(db,'game1/mrunal_pranit/message'),{pranit: "",mrunal:""});
-        const questionRef = ref(db, 'game1/mrunal_pranit/question');
+        set(ref(db,'game1/'+concat_str+'/question'),{value: "Start the game"});
+        set(ref(db,'game1/'+concat_str+'/score'),{user1: 10, user2: 10});
+        set(ref(db,'game1/'+concat_str+'/message'),{user1: "",user2:""});
+        const questionRef = ref(db, 'game1/'+concat_str+'/question');
         onValue(questionRef, (snapshot) => {
         const data = snapshot.val();
         setCurrQuestion(data.value);
         });
 
-        const scoreRef = ref(db, 'game1/mrunal_pranit/score');
+        const scoreRef = ref(db, 'game1/'+concat_str+'/score');
         onValue(scoreRef, (snapshot) => {
         const data = snapshot.val();
-        setPranitScore(data.pranit);
-        setMrunalScore(data.mrunal);
+        setUser1Score(data.user1);
+        setUser2Score(data.user2);
         });
 
-        const messageRef = ref(db, 'game1/mrunal_pranit/message');
+        const messageRef = ref(db, 'game1/'+concat_str+'/message');
         onValue(messageRef, (snapshot) => {
         const data = snapshot.val();
-        setPranitMessage(data.pranit);
-        setMrunalMessage(data.mrunal);
+        setUser1Message(data.user1);
+        setUser2Message(data.user2);
         });
 
     },[]);
@@ -79,7 +83,7 @@ const Game = () => {
             return;
         }
         let tm = textMessage;
-        set(ref(db,'game1/mrunal_pranit/message'),{pranit: tm, mrunal: mrunalMessage});
+        set(ref(db,'game1/'+concat_str+'/message'),{user1: tm, user2: user2Message});
         setTextMessage("");
     }
 
@@ -89,15 +93,15 @@ const Game = () => {
             return;
         }
         let tm = askQuestionText;
-        set(ref(db,'game1/mrunal_pranit/question'),{value: tm});
+        set(ref(db,'game1/'+concat_str+'/question'),{value: tm});
         setTextMessage("");
     }
 
     const popQuestion = () => {
         const db = getDatabase();
         if (questions.length !== 0){
-            set(ref(db,'game1/mrunal_pranit/question'),{value: questions[0].question});
-            set(ref(db,'game1/mrunal_pranit/message'),{pranit:"", mrunal:""});
+            set(ref(db,'game1/'+concat_str+'/question'),{value: questions[0].question});
+            set(ref(db,'game1/'+concat_str+'/message'),{user1:"", user2:""});
             questions.shift();
             setQuestions([...questions]);
         }
@@ -108,22 +112,22 @@ const Game = () => {
 
     const onAnswer = (bool) => {
         const db = getDatabase();
-        if(pranitScore === 0){
+        if(user1Score === 0){
             return;
         }
         if (bool){
-            let sc = pranitScore-1;
-            set(ref(db,'game1/mrunal_pranit/score'),{pranit: sc, mrunal: mrunalScore});
-            set(ref(db,'game1/mrunal_pranit/message'),{pranit: "I have", mrunal: mrunalMessage});
+            let sc = user1Score-1;
+            set(ref(db,'game1/'+concat_str+'/score'),{user1: sc, user2: user2Score});
+            set(ref(db,'game1/'+concat_str+'/message'),{user1: "I have", user2: user2Message});
         }
         else{
-            set(ref(db,'game1/mrunal_pranit/message'),{pranit: "I have not", mrunal: mrunalMessage});
+            set(ref(db,'game1/'+concat_str+'/message'),{user1: "I have not", user2: user2Message});
         }
     }
 
     return (
         <div style={{ padding: 20 }}>
-            <h3 style={{textAlign:'center'}}>Mr_Pd</h3>
+            <h3 style={{textAlign:'center'}}>{concat_str}</h3>
             <Row>
                 <img
                     style={{ marginRight: "auto" }}
@@ -144,19 +148,19 @@ const Game = () => {
                 />
             </Row>
             <Row>
-                <b style={{ marginRight: "auto", fontSize: 25 }}>{pranitScore}</b>
-                <b style={{ marginLeft: "auto", fontSize: 25 }}>{mrunalScore}</b>
+                <b style={{ marginRight: "auto", fontSize: 25 }}>{user1Score}</b>
+                <b style={{ marginLeft: "auto", fontSize: 25 }}>{user2Score}</b>
             </Row>
             <Row>
                 <InputGroup style={{width:"40%", marginRight: "auto"}}>
                     <Input 
-                        value={pranitMessage}
+                        value={user1Message}
                         disabled
                     />
                 </InputGroup>
                 <InputGroup style={{width:"40%", marginLeft: "auto"}}>
                     <Input 
-                        value={mrunalMessage}
+                        value={user2Message}
                         disabled
                         style={{ textAlign: 'end' }}
                     />
