@@ -42,8 +42,8 @@ const Game = ({user1,user2}) => {
     useEffect(() => {
         const db = getDatabase();
         set(ref(db,'game1/'+concat_str+'/question'),{value: "Start the game"});
-        set(ref(db,'game1/'+concat_str+'/score'),{user1: 10, user2: 10});
-        set(ref(db,'game1/'+concat_str+'/message'),{user1: "",user2:""});
+        set(ref(db,'game1/'+concat_str+'/score'),{[user1]: 10, [user2]: 10});
+        set(ref(db,'game1/'+concat_str+'/message'),{[user1]: "", [user2]:""});
         const questionRef = ref(db, 'game1/'+concat_str+'/question');
         onValue(questionRef, (snapshot) => {
         const data = snapshot.val();
@@ -53,18 +53,18 @@ const Game = ({user1,user2}) => {
         const scoreRef = ref(db, 'game1/'+concat_str+'/score');
         onValue(scoreRef, (snapshot) => {
         const data = snapshot.val();
-        setUser1Score(data.user1);
-        setUser2Score(data.user2);
+        setUser1Score(data[user1]);
+        setUser2Score(data[user2]);
         });
 
         const messageRef = ref(db, 'game1/'+concat_str+'/message');
         onValue(messageRef, (snapshot) => {
         const data = snapshot.val();
-        setUser1Message(data.user1);
-        setUser2Message(data.user2);
+        setUser1Message(data[user1]);
+        setUser2Message(data[user2]);
         });
 
-    },[concat_str]);
+    },[concat_str,user1,user2]);
 
 
     const handleChange = e => {
@@ -82,7 +82,7 @@ const Game = ({user1,user2}) => {
             return;
         }
         let tm = textMessage;
-        set(ref(db,'game1/'+concat_str+'/message'),{user1: tm, user2: user2Message});
+        set(ref(db,'game1/'+concat_str+'/message'),{[user1]: tm, [user2]: user2Message});
         setTextMessage("");
     }
 
@@ -100,7 +100,7 @@ const Game = ({user1,user2}) => {
         const db = getDatabase();
         if (questions.length !== 0){
             set(ref(db,'game1/'+concat_str+'/question'),{value: questions[0].question});
-            set(ref(db,'game1/'+concat_str+'/message'),{user1:"", user2:""});
+            set(ref(db,'game1/'+concat_str+'/message'),{[user1]:"", [user2]:""});
             questions.shift();
             setQuestions([...questions]);
         }
@@ -116,11 +116,11 @@ const Game = ({user1,user2}) => {
         }
         if (bool){
             let sc = user1Score-1;
-            set(ref(db,'game1/'+concat_str+'/score'),{user1: sc, user2: user2Score});
-            set(ref(db,'game1/'+concat_str+'/message'),{user1: "I have", user2: user2Message});
+            set(ref(db,'game1/'+concat_str+'/score'),{[user1]: sc, [user2]: user2Score});
+            set(ref(db,'game1/'+concat_str+'/message'),{[user1]: "I have", [user2]: user2Message});
         }
         else{
-            set(ref(db,'game1/'+concat_str+'/message'),{user1: "I have not", user2: user2Message});
+            set(ref(db,'game1/'+concat_str+'/message'),{[user1]: "I have not", [user2]: user2Message});
         }
     }
 
