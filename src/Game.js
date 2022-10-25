@@ -17,7 +17,7 @@ const Game = ({user1,user2}) => {
     const [user1Message,setUser1Message] = useState("");
     const [user2Message,setUser2Message] = useState("");
     const [textMessage,setTextMessage] = useState("");
-    const [askQuestionText,setAskQuestionText]  = useState("");
+    const [askQuestionText,setAskQuestionText]  = useState("Never have I ever ");
     const [fetched, setFetched] = useState(false);
     // const user1 = "pranit";
     // const user2 = "mrunal";
