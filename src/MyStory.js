@@ -173,7 +173,7 @@ function MyStory() {
 
     </div> : 
     <div>
-      <Modal isOpen={true} toggle={() => setModal(false)}>
+      <Modal isOpen={true}>
         <div className="modal-header justify-content-center">
           <button
             className="close"
@@ -182,7 +182,7 @@ function MyStory() {
           >
             <i className="now-ui-icons ui-1_simple-remove"></i>
           </button>
-          <h4 className="title title-up">New Chapter {'<'}3</h4>
+          <h4 className="title title-up">Authentication check</h4>
         </div>
         <ModalBody>
           <FormGroup className="has-success">

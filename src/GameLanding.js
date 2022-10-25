@@ -1,14 +1,14 @@
 import Game from 'Game';
 import React, { useState } from 'react'
 import {
-    Input, InputGroup, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button
+    Input,InputGroup, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button
 } from 'reactstrap'
 
 function GameLanding() {
     const [user1, setUser1] = useState("");
     const [user2, setUser2] = useState("");
     const [goNext, setGoNext] = useState(false);
-    const list = ["mrunal", "pranit","kapil","oshin"];
+    const list = ["mrunal", "pranit", "kapil", "oshin"];
     const handleChange = e => {
         const value = e.target.value
         setUser1(value);
@@ -16,6 +16,7 @@ function GameLanding() {
 
     return (
         <div>
+            
             {!goNext ?
                 <div style={{ padding: 30, width: 250 }}>
                     <InputGroup>
@@ -27,7 +28,7 @@ function GameLanding() {
                         ></Input>
                     </InputGroup>
                     <User2Select list={list} user2={user2} setUser2={setUser2} />
-                    <Button onClick={()=> setGoNext(true)} color="info" type="button">
+                    <Button onClick={() => setGoNext(true)} color="info" type="button">
                         Next
                     </Button>
                 </div> : <Game user1={user1} user2={user2} />}
@@ -45,7 +46,7 @@ const User2Select = ({ list, user2, setUser2 }) => {
                 {
                     list.map((val, ind) => {
                         return (
-                            <DropdownItem id={ind} onClick={() => setUser2(val)}>
+                            <DropdownItem key={ind} onClick={() => setUser2(val)}>
                                 {val}
                             </DropdownItem>
                         )

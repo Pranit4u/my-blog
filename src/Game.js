@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {
     Input, InputGroup, InputGroupAddon, InputGroupText, Row, Card, CardBody,
-    UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Container, Button
+    UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Container, Button,
+    Alert
 } from 'reactstrap'
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import axios from 'axios';
+const profList = require('./assets/profpics')
 
 const Game = ({user1,user2}) => {
     const [genre,setGenre] = useState("Rom");
@@ -95,18 +97,25 @@ const Game = ({user1,user2}) => {
         set(ref(db,'game1/'+concat_str+'/question'),{value: tm});
         setTextMessage("");
     }
+    const closeAlert = () => {
+        const db = getDatabase();
+        setUser1Score(10);
+        setUser2Score(10);
+        set(ref(db,'game1/'+concat_str+'/score'),{[user1]: user1Score, [user2]: user2Score});
+    }
 
     const popQuestion = () => {
         const db = getDatabase();
         if (questions.length !== 0){
-            set(ref(db,'game1/'+concat_str+'/question'),{value: questions[0].question});
+            let rndm = questions.splice((Math.random() * questions.length) | 0, 1);
+            set(ref(db,'game1/'+concat_str+'/question'),{value: rndm[0].question});
             set(ref(db,'game1/'+concat_str+'/message'),{[user1]:"", [user2]:""});
-            questions.shift();
             setQuestions([...questions]);
         }
         else{
             setCurrQuestion("End Game")
         }
+        
     }
 
     const onAnswer = (bool) => {
@@ -126,13 +135,21 @@ const Game = ({user1,user2}) => {
 
     return (
         <div style={{ padding: 20 }}>
+            {
+                (user1Score === 0) ? <GameOverAlert msg={"You lose"} color={"danger"} closeAlert={closeAlert}/> : ""
+            }
+            {
+                (user2Score === 0 && user1Score !== 0) ? <GameOverAlert msg={"You win"} color={"success"} closeAlert={closeAlert}/>: ""
+            }
+            
             <h3 style={{textAlign:'center'}}>{concat_str}</h3>
             <Row>
                 <img
                     style={{ marginRight: "auto" }}
                     alt={user1}
                     className="rounded img-raised"
-                    src={require(`assets/img/people/${user1}.jpg`)}
+                    src={profList[user1]}
+                    // src={require(`assets/img/people/${user1}.jpg`)}
                     height={50}
                     width={50}
                 />
@@ -141,7 +158,8 @@ const Game = ({user1,user2}) => {
                     style={{ marginLeft: "auto" }}
                     alt={user2}
                     className="rounded img-raised"
-                    src={require(`assets/img/people/${user2}.jpg`)}
+                    src={profList[user2]}
+                    // src={require(`assets/img/people/${user2}.jpg`)}
                     height={50}
                     width={50}
                 />
@@ -182,8 +200,27 @@ const Game = ({user1,user2}) => {
     )
 }
 
-
-
+const GameOverAlert = ({msg,color,closeAlert}) => {
+    return(
+        <Alert color={color} isOpen={true}>
+                <Container>
+                    <div className="alert-icon">
+                        <i className="now-ui-icons ui-2_like"></i>
+                    </div>
+                    <strong>{msg}</strong>
+                    <button
+                        type="button"
+                        className="close"
+                        onClick={closeAlert}
+                    >
+                        <span aria-hidden="true">
+                            <i className="now-ui-icons ui-1_simple-remove"></i>
+                        </span>
+                    </button>
+                </Container>
+            </Alert>
+    )
+}
 
 const AskQuestionBox = ({askQuestionText,handleChange2,sendAskQuestion}) => {
     return (
