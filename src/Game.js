@@ -10,8 +10,8 @@ const Game = ({user1,user2}) => {
     const [genre,setGenre] = useState("Rom");
     const [questions,setQuestions] = useState([]);
     const [currQuestion,setCurrQuestion] = useState("Start the game");
-    const [user1Score,setUser1Score] = useState(50);
-    const [user2Score,setUser2Score] = useState(50);
+    const [user1Score,setUser1Score] = useState(10);
+    const [user2Score,setUser2Score] = useState(10);
     const [user1Message,setUser1Message] = useState("");
     const [user2Message,setUser2Message] = useState("");
     const [textMessage,setTextMessage] = useState("");
@@ -132,7 +132,7 @@ const Game = ({user1,user2}) => {
                     style={{ marginRight: "auto" }}
                     alt={user1}
                     className="rounded img-raised"
-                    // src={require("assets/img/julie.jpg")}
+                    src={require(`assets/img/people/${user1}.jpg`)}
                     height={50}
                     width={50}
                 />
@@ -141,7 +141,7 @@ const Game = ({user1,user2}) => {
                     style={{ marginLeft: "auto" }}
                     alt={user2}
                     className="rounded img-raised"
-                    // src={require("assets/img/julie.jpg")}
+                    src={require(`assets/img/people/${user2}.jpg`)}
                     height={50}
                     width={50}
                 />

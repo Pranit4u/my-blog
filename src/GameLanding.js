@@ -8,7 +8,7 @@ function GameLanding() {
     const [user1, setUser1] = useState("");
     const [user2, setUser2] = useState("");
     const [goNext, setGoNext] = useState(false);
-    const list = ["mrunal", "pranit"];
+    const list = ["mrunal", "pranit","kapil","oshin"];
     const handleChange = e => {
         const value = e.target.value
         setUser1(value);
