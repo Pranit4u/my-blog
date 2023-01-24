@@ -26,7 +26,7 @@ const Game = ({user1,user2}) => {
     const getQuestions = async (gen) => {
         setFetched(true);
         setGenre(gen);
-        const res = await axios.get('https://pranit-blog.herokuapp.com/nhie/get', {
+        const res = await axios.get('https://spring-green-peacock-veil.cyclic.app/nhie/get', {
           params: {
             genre: gen
           }

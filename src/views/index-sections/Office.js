@@ -38,7 +38,7 @@ function OfficeSection() {
   const [fetched,setFetched] = React.useState(false);
 
   const getPictures = async() => {
-        const res = await axios.get('https://pranit-blog.herokuapp.com/addPicture/get',{
+        const res = await axios.get('https://spring-green-peacock-veil.cyclic.app/addPicture/get',{
             params: {
               type: "Office"
             }

@@ -69,7 +69,7 @@ const SignUp = () => {
   //     "content": message.content
   //   }
 
-  //   axios.post("https://pranit-blog.herokuapp.com/sendMessage/send", obj)
+  //   axios.post("https://spring-green-peacock-veil.cyclic.app/sendMessage/send", obj)
   //     .then(res => {
   //       const r = res.data.message;
   //       switch (r) {

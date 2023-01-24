@@ -95,7 +95,7 @@ function Tabs() {
   };
 
   const uploadPicture = () => {
-    axios.post("https://pranit-blog.herokuapp.com/addPicture/add", info)
+    axios.post("https://spring-green-peacock-veil.cyclic.app/addPicture/add", info)
             .then(res => {
                 const r = res.data.message;
                 switch (r) {
@@ -116,7 +116,7 @@ function Tabs() {
 
 
   const getMessages = async () => {
-    const res = await axios.get('https://pranit-blog.herokuapp.com/sendMessage/get', {
+    const res = await axios.get('https://spring-green-peacock-veil.cyclic.app/sendMessage/get', {
       params: {
       }
     });
